@@ -88,8 +88,10 @@ conda activate C:\Users\swaga\Desktop\ML\Machine_learning_E2E_project\venv
  
 Publishing is done by following command:
 •	git status 
+•	git add .
 •	git commit -m "your own words to understand what you published"
 •	git push -u origin main
+
  
 This completes project structure, exception handling.
  
