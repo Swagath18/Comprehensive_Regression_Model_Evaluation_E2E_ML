@@ -1,0 +1,97 @@
+Step by Step guide on this project
+
+This project gives you end to end experience on Data Science
+ 
+Setting up github repository, creating new environment, setup.py, requirements.txt, source folder and building the package
+ 
+Install VS code, which will be easy to follow below steps (https://code.visualstudio.com/Download#)
+Create project folder in your local device and copy path of that folder
+Create project in github repository with same name, we can find some instruction which we will be using as shown in below steps
+ 
+(This is how it will appear in github once we create project in repository)
+_______________________Do Not Execute this block, it is an Example block _________________
+echo "# Machine_learning_E2E_project" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Swagath18/Machine_learning_E2E_project.git
+git push -u origin main
+__________________________________________________________________________________
+ 
+Open Anaconda prompt:
+•	cd path
+    o	cd C:\Users\swaga\Desktop\Machine_learning_project
+•	Code . (this will trigger vscode instance with the project)
+ 
+Open Terminal in VS code: cmd
+•	conda create -p venv python==3.8 -y (environment(venv) creation -not to work in base environment)
+•	conda activate venv/ (activating new environment)
+ 
+Cloning VS code repository to GitHub
+•	git init  (initializing git repository)
+•	create README.md file under project  in VS code and Ctrl+s
+    o	git add README.md
+•	git commit -m "first commit" (saving changes)
+•	git status (To check status)
+ 
+To push it to github we need to keep it in sync
+•	git  branch -M main
+•	git remote add origin https://github.com/Swagath18/Machine_learning_E2E_project.git
+•	New users:
+    o	git config --global user.email "xyz@gmail.com"
+    o	git  config --global user.name "Swagath Babu"
+•	git  push -u origin main (updating to github)
+ 
+Create .gitignore in github under project, this is used to exclude certain directories to be committed to git
+•	While creating, choose .gitignore to python before committing the changes in github
+•	git pull (executed in terminal to update the changes made in github)
+ 
+Create setup.py and requirement.txt under project in VS code
+•	setup.py file is responsible for creating our ML application as a package, even we can build entire application as a package and deploy.
+•	requirements.txt file has all the modules that we need to install
+    o	In requirments.txt file add libraries like panda, numpy, line by line and add -e . In last line, this will be explained in setup.py code
+•	To find out how many packages are there for the setup file to install, it will be done by creating source file in project.
+    o	Create src folder under project
+    o	Create __init__.py file under src folder which helps the setup file to identify this src folder as a package. (find_package() function in setup.py will detect in how many folders there exist __init__.py files and it will consider that folder as package). This can be imported as other standard packages later.
+•	Explained each and every line of code in setup.py file (Ctrl+s before executing command in terminal)
+•	pip install -r requirements.txt
+ 
+Now let us create 2 folders in src called components and pipeline
+•	Under components and pipeline Create __init__.py file so that we can export or import as a package.
+•	components
+    •	components are like modules where we create multiple process which will be discussed in further steps. 
+    •	Create below files under components folder
+        o	First component called data_ingestion.py it is part of a module which has all the instructions to reads the data from specific database.
+        o	Second component called data_transformation.py which transforms the data, example categorical to numerical features etc.
+        o	model_trainer.py - purpose of this folder is to train our model.
+•	pipeline
+    •	pipeline are of 2 types , training_pipeline and predict_pipeline  which are created under pipeline folder
+        o	train_pipeline.py will have all the instruction or code for training pipeline itself and with this we will be triggering all the components which was discussed above.
+        o	predict_pipeline , this file is for prediction purpose which we will be using for new data.
+ 
+Create 3 more files to keep all the logs, handle exceptions and common function, under src.
+1.	logger.py
+2.	exception.py
+3.	utils.py
+ 
+Exception are to handle errors which occurred in script, which gives us error message and location of that error.
+Loggers are used for logging all information for us to track all the errors and log into text file
+•	Check exception.py, logger.py file for code for line by line explanation
+ 
+To test these file we can execute it with command for logger and exception
+•	python src/logger.py  after executing this we can find the logs text file under logs folder in the project
+•	python src/exception.py 
+ 
+General activation is done using this command: conda activate projectpath\venu
+conda activate C:\Users\swaga\Desktop\ML\Machine_learning_E2E_project\venv
+ 
+Publishing is done by following command:
+•	git status 
+•	git commit -m "your own words to understand what you published"
+•	git push -u origin main
+ 
+This completes project structure, exception handling.
+ 
+ 
+
