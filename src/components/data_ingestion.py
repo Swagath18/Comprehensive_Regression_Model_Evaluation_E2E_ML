@@ -10,6 +10,9 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformation
 from src.components.data_transformation import DataTransformationConfig
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
+
 # This decorator is used to define class variables instead of init and we can directly define variables 
 @dataclass #better to use only when defining variables
 #inputs to the data ingestion components are gives below and dataingestion componet will save the output in given path below.
@@ -60,5 +63,10 @@ if __name__=="__main__":
     train_data,test_data=obj.initiate_data_ingestion()
 
     data_tranformation=DataTransformation()
-    data_tranformation.initiate_data_transformation(train_data, test_data)
+    #datatrasnformation returns 3 values lets take 1st two and other is there in pickel
+    train_arr, test_arr, _= data_tranformation.initiate_data_transformation(train_data, test_data)
+
+    modeltrainer=ModelTrainer()
+    R2SCORE=modeltrainer.initiate_model_trainer(train_arr, test_arr)
+    print("R2SCORE: ", R2SCORE)# after this execute data_ingestion.py
 
