@@ -75,11 +75,11 @@ Create 3 more files to keep all the logs, handle exceptions and common function,
 2.	exception.py
 3.	utils.py
  
-Exception are to handle errors which occurred in script, which gives us error message and location of that error.
-Loggers are used for logging all information for us to track all the errors and log into text file
-•	Check exception.py, logger.py file for code for line by line explanation
+Exceptions are to handle errors which occurred in script, which gives us error message and location of that error.
+Loggers are used for logging all information for us to track all the errors and log into text file.
+•	Check exception.py, logger.py file for code for line-by-line explanation
  
-To test these file we can execute it with command for logger and exception
+To test these files, we can execute it with command for logger and exception
 •	python src/logger.py  after executing this we can find the logs text file under logs folder in the project
 •	python src/exception.py 
  
@@ -96,4 +96,54 @@ Publishing is done by following command:
 This completes project structure, exception handling.
  
  
+This is how real project is done and let us start. 
 
+The data is collected from various sources and stored in data sources like Hadoop , Mango dB etc.
+Here let us first try to read the data from local device later we will improvise to read from other sources.
+
+Data ingestion : reading data from data sources, here we are reading from local device, and saving it in artifacts.
+	- Coding part is explained in code
+	- To save the data it must know the input path which is created in class data ingestion
+	- Once data_ingestion is complete run this command to execute 
+		○ python src/components/data_ingestion.py
+	- If you get any error like src not defined, execute this command
+		○ set PYTHONPATH
+		► If you get Environment variable PYTHONPATH not defined
+		○ set PYTHONPATH= (your project path)
+		○ python src/components/data_ingestion.py
+	- Once this is successful, we can check the artifacts and logfile are created and updated
+By changing one line of code, we can read the data from API or Mango DB etc which is indicated in code.
+Finally add .artifacts in .gitignore under #Environments
+
+Now it adding to the github
+	· git status 
+	· git add .
+	· git commit -m "your own words to understand what you published."
+	· git push -u origin main
+
+
+Once we can see the data in artifacts it will be combinations of categorical and numerical features and we need to perform transformation to represent it in standard form , so let's do data transformation.
+
+Data Transformation : main purpose is featuring engineering data cleaning, converting categorical features to numerical features we can do using transformation.
+
+To save the object as shown in the data transformation code, we will be using utils.py.
+
+Utils.py will have all the common functionalities which the entire project will use.
+
+ Model_training.py is done after Data transformation which is explained in code.
+
+For Hyperparameter tuning, we just add the params parameter after models and we update utils with params.
+
+
+####################____________Reference_______________############
+General activation is done using this command: conda activate projectpath\venu
+conda activate C:\Users\swaga\Desktop\ML\Machine_learning_E2E_project\venv
+
+
+Publishing is done by following command:
+	• git status 
+	• git add .
+	• git commit -m "your own words to understand what you published"
+	• git push -u origin main
+
+#########################################################################
